@@ -1524,7 +1524,7 @@ static void async_event(int pipe, time_t now)
 	
       case EVENT_DUMP:
 	if (daemon->port != 0)
-	  dump_cache(now);
+	  dump_cache(now, 0);
 	break;
 	
       case EVENT_ALARM:
@@ -1610,6 +1610,9 @@ static void async_event(int pipe, time_t now)
 	   we leave them logging to the old file. */
 	if (daemon->log_file != NULL)
 	  log_reopen(daemon->log_file);
+	else
+	  if (daemon->port != 0)
+	    dump_cache(now, 1);
 	break;
 
       case EVENT_NEWADDR:

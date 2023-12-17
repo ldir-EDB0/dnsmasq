@@ -1359,7 +1359,7 @@ void cache_reload(void);
 void cache_add_dhcp_entry(char *host_name, int prot, union all_addr *host_address, time_t ttd);
 struct in_addr a_record_from_hosts(char *name, time_t now);
 void cache_unhash_dhcp(void);
-void dump_cache(time_t now);
+void dump_cache(time_t now, unsigned int force_dump);
 #ifndef NO_ID
 int cache_make_stat(struct txt_record *t);
 #endif

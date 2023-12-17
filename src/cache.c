@@ -1986,7 +1986,7 @@ static void dump_cache_entry(struct crec *cache, time_t now)
   my_syslog(LOG_INFO, "%s", buff);
 }
 
-void dump_cache(time_t now)
+void dump_cache(time_t now, unsigned int force_dump)
 {
   struct server *serv, *serv1;
 
@@ -2040,7 +2040,7 @@ void dump_cache(time_t now)
 		  daemon->addrbuff, port, queries, retrys, failed_queries, nxdomain_replies, sigma_latency/count_latency);
       }
 
-  if (option_bool(OPT_DEBUG) || option_bool(OPT_LOG))
+  if (option_bool(OPT_DEBUG) || option_bool(OPT_LOG) || force_dump)
     {
       struct crec *cache;
       int i;
